@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Fotografolio</RootNamespace>
+    <SpaRoot>clientapp\</SpaRoot>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Compile Remove="wwwroot\clientapp\**" />
+    <Content Remove="wwwroot\clientapp\**" />
+    <EmbeddedResource Remove="wwwroot\clientapp\**" />
+    <None Remove="wwwroot\clientapp\**" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.10.0" />
+    <PackageReference Include="HtmlAgilityPack.NetCore" Version="1.5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.2.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.23" />
+    <PackageReference Include="VueCliMiddleware" Version="3.0.0" />
+  </ItemGroup>
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(ASPNETCORE_ENVIRONMENT)' == 'Development-prod'">
+     <PropertyGroup>
+      <ASPNETCORE_ENVIRONMENT Condition="'$(ASPNETCORE_ENVIRONMENT)' == ''">Development</ASPNETCORE_ENVIRONMENT>
+    </PropertyGroup>
+    
+    <RemoveDir Condition="'$(ASPNETCORE_ENVIRONMENT)' == 'Development-prod'" Directories="$(ProjectDir)\wwwroot\js;$(DebugDirectory)\wwwroot\css" />
+    <Exec WorkingDirectory="$(ProjectDir)/clientapp" Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec Condition="'$(ASPNETCORE_ENVIRONMENT)' == 'Development-prod'" WorkingDirectory="$(ProjectDir)\clientapp" Command="npm install" />
+    <Exec Condition="'$(ASPNETCORE_ENVIRONMENT)' == 'Development-prod'" WorkingDirectory="$(ProjectDir)\clientapp" Command="npm run build" />
+    <!--<Copy SourceFiles="$(ProjectDir)\clientapp\dist\js\*.*" DestinationFolder="$(ProjectDir)\wwwroot\js" />-->
+    <!--<Copy SourceFiles="$(ProjectDir)\clientapp\dist\css\*.*" DestinationFolder="$(ProjectDir)\wwwroot\css" />-->
+    
+    <!--<Exec Command="&quot;$(ProjectDir)PreBuildEvent.bat&quot; &quot;$(ProjectDir)..\&quot; &quot;$(ProjectDir)&quot; &quot;$(TargetDir)&quot;" />-->
+  </Target>
+
+  <!--<ItemGroup>
+    <MySourceFiles Include="$(ProjectDir)\clientapp\dist\**\*.*"/>
+  </ItemGroup>
+
+  <Target Name="CopyFiles">
+    <Copy
+        SourceFiles="@(MySourceFiles)"
+        DestinationFiles="@(MySourceFiles->'$(ProjectDir)\wwwroot\dist\%(RecursiveDir)%(Filename)%(Extension)')"
+        />
+  </Target>-->
+
+</Project>

@@ -1,0 +1,59 @@
+﻿@model Fotografolio.Data.ViewModels.IndexPageViewModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <!--<link type="text/css" rel="stylesheet" href="/assets/css/fullscreen_spiner.css" />-->
+
+
+    <meta name="csrf-token" content="@Model.AuthViewModel.AntiforgeryRequestToken">
+    <meta name="login-status" content="@Model.AuthViewModel.LoginStatus">
+    @using Fotografolio.Services
+    @if (User.Identity.IsAuthenticated || UserService.JWTready)
+    {
+        <meta name="api-token" content="@Model.AuthViewModel.ApiToken">
+    }
+
+
+    <title>Fotografolio</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+
+    @*<link href=/css/app.0f82a377.css rel=preload as= style>
+    <link href=/js/app.0426e60b.js rel=preload as=script>
+    <link href=/js/chunk-vendors.81d2fb61.js rel=preload as=script>
+    <link href=/css/app.0f82a377.css rel=stylesheet>*@
+    <link href=@Model.VueFilesViewModel.AppCss rel=preload as= style>
+    <link href=@Model.VueFilesViewModel.AppJs rel=preload as=script>
+    <link href=@Model.VueFilesViewModel.ChunkJs rel=preload as=script>
+    <link href=@Model.VueFilesViewModel.AppCss rel=stylesheet>
+</head>
+<body>
+    <noscript>
+        <strong>We're sorry but Fotografolio doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+    </div>
+    <!-- built files will be auto injected -->
+    @*<script src=/js/chunk-vendors.81d2fb61.js></script>
+    <script src=/js/app.0426e60b.js></script>*@
+    <script src=@Model.VueFilesViewModel.ChunkJs></script>
+    <script src=@Model.VueFilesViewModel.AppJs></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotografolio", "Fotografolio\Fotografolio.csproj", "{EA24A46E-7F79-4716-B6C5-BF93F34C80A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA24A46E-7F79-4716-B6C5-BF93F34C80A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA24A46E-7F79-4716-B6C5-BF93F34C80A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA24A46E-7F79-4716-B6C5-BF93F34C80A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA24A46E-7F79-4716-B6C5-BF93F34C80A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73612CDD-B6B4-4159-A6F7-E93F4C68A109}
+	EndGlobalSection
+EndGlobal
